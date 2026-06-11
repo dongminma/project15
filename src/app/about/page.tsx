@@ -5,20 +5,36 @@ import { motion } from "motion/react";
 import { useLanguage } from "@/components/LanguageProvider";
 import styles from "./page.module.css";
 
-const MEMBERS = [
-  {
-    name: "DONGMIN MA",
-    type: "HUMAN",
-    role: {
-      en: "Founder / Architect / Filmmaker / AI Creator",
-      ko: "창립자 / 건축가 / 필름메이커 / AI 크리에이터",
-    },
-    image: "/media/profile.jpg",
-    bio: {
-      en: "Trained in architecture, Dongmin Ma explores the boundary between reality and imagination through architecture, film, AI-generated imagery, and worldbuilding.",
-      ko: "건축을 전공한 마동민은 건축, 영화, AI 생성 이미지, 세계관 구축을 통해 현실과 상상의 경계를 탐구합니다.",
-    },
+type LocalizedText = {
+  en: string;
+  ko: string;
+};
+
+type Member = {
+  name: string;
+  type: string;
+  role: LocalizedText;
+  image?: string;
+  bio?: LocalizedText;
+  disabled?: boolean;
+};
+
+const FOUNDER: Member = {
+  name: "DONGMIN MA",
+  type: "HUMAN",
+  role: {
+    en: "Founder / Architect / Filmmaker / AI Creator",
+    ko: "창립자 / 건축가 / 필름메이커 / AI 크리에이터",
   },
+  image: "/media/profile.jpg",
+  bio: {
+    en: "Trained in architecture, Dongmin Ma explores the boundary between reality and imagination through architecture, film, AI-generated imagery, and worldbuilding.",
+    ko: "건축을 전공한 마동민은 건축, 영화, AI 생성 이미지, 세계관 구축을 통해 현실과 상상의 경계를 탐구합니다.",
+  },
+};
+
+const MEMBERS: Member[] = [
+  FOUNDER,
   {
     name: "KIM SUNGSOO",
     type: "HUMAN",
@@ -67,11 +83,11 @@ function getTypeColor(type: string) {
 }
 
 export default function AboutPage() {
-  const [selectedMember, setSelectedMember] = useState<(typeof MEMBERS)[number] | null>(null);
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
   const memberDetailRef = useRef<HTMLElement>(null);
   const { text } = useLanguage();
 
-  function openMember(member: (typeof MEMBERS)[number]) {
+  function openMember(member: Member) {
     if (member.disabled) {
       return;
     }
@@ -153,10 +169,10 @@ export default function AboutPage() {
               <span className={styles.label}>FOUNDER</span>
               <h2 className={styles.founderName}>DONGMIN MA</h2>
               <p className={styles.founderRole}>
-                {text(MEMBERS[0].role)}
+                {text(FOUNDER.role)}
               </p>
               <p className={styles.founderBio}>
-                {text(MEMBERS[0].bio)}
+                {text(FOUNDER.bio ?? { en: "", ko: "" })}
               </p>
             </motion.div>
           </div>
