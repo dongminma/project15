@@ -1,0 +1,307 @@
+/* ============================================================================
+   NOMADIC Design System — Based on design.md (SpaceX-inspired)
+   ============================================================================ */
+
+/* --- Design Tokens --- */
+:root {
+  /* Surface Colors */
+  --canvas-night: #000000;
+  --canvas-night-soft: #0a0a0a;
+  --canvas-light: #ffffff;
+  --canvas-cool: #f0f0fa;
+  --hairline-on-dark: #3a3a3f;
+  --hairline-on-light: #e0e0e8;
+
+  /* Text Colors */
+  --on-primary: #ffffff;
+  --on-primary-mute: #a0a0a8;
+  --ink: #000000;
+  --ink-mute: #5a5a5f;
+
+  /* Spacing (8px base) */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 18px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --spacing-huge: 48px;
+  --spacing-giant: 64px;
+  --spacing-mega: 96px;
+  --spacing-ultra: 128px;
+
+  /* Border Radius */
+  --rounded-xs: 4px;
+  --rounded-sm: 8px;
+  --rounded-md: 16px;
+  --rounded-pill: 32px;
+  --rounded-full: 9999px;
+
+  /* Container */
+  --max-width: 1200px;
+  --max-width-wide: 1400px;
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--canvas-night);
+  color: var(--on-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --- Typography Classes --- */
+.display-xxl {
+  font-size: clamp(40px, 8vw, 80px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.display-xl {
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+}
+
+.body-lg {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.32px;
+}
+
+.body-md {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.32px;
+}
+
+.button-cap {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: 1.17px;
+  text-transform: uppercase;
+}
+
+.micro-cap {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 2.0;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+}
+
+.caption {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* --- Container --- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+.container-wide {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+/* --- Section Spacing --- */
+.section {
+  padding: var(--spacing-mega) 0;
+}
+
+.section-border {
+  border-top: 1px solid var(--hairline-on-dark);
+}
+
+/* --- Ghost Button (Signature CTA) --- */
+.ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border: 1px solid var(--on-primary);
+  border-radius: var(--rounded-pill);
+  color: var(--on-primary);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.17px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.ghost-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ghost-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.ghost-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* --- Link Arrow --- */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.17px;
+  text-transform: uppercase;
+  color: var(--on-primary);
+  transition: opacity 0.3s ease;
+}
+
+.link-arrow:hover {
+  opacity: 0.7;
+}
+
+/* --- Scroll Indicator --- */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-xxl);
+  right: var(--spacing-xxl);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--on-primary-mute);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* --- Section Header --- */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-huge);
+}
+
+/* --- Video Overlay (for reel modal) --- */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-overlay video {
+  width: 90vw;
+  max-width: 1200px;
+  border-radius: var(--rounded-sm);
+}
+
+.video-overlay-close {
+  position: absolute;
+  top: var(--spacing-xxl);
+  right: var(--spacing-xxl);
+  color: var(--on-primary);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* --- Responsive --- */
+@media (max-width: 960px) {
+  .section {
+    padding: var(--spacing-giant) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .container-wide {
+    padding: 0 var(--spacing-md);
+  }
+
+  .section {
+    padding: var(--spacing-huge) 0;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}

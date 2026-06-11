@@ -1,0 +1,256 @@
+.page {
+  padding-top: 0;
+}
+
+.hero {
+  position: relative;
+  height: 60vh;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-bottom: 1px solid var(--hairline-on-dark);
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.86) 0%,
+    rgba(0, 0, 0, 0.58) 52%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  padding-bottom: var(--spacing-huge);
+}
+
+.heroCopy {
+  max-width: 700px;
+  margin-top: var(--spacing-xxl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.heroCopy p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--on-primary-mute);
+  letter-spacing: 0.32px;
+}
+
+/* Founder */
+.founder {
+  background: var(--canvas-night);
+}
+
+.founderGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-huge);
+  align-items: center;
+}
+
+.founderImageWrap {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: var(--rounded-xs);
+}
+
+.founderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.founderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--on-primary-mute);
+}
+
+.founderName {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--on-primary);
+}
+
+.founderRole {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--on-primary-mute);
+  letter-spacing: 0.32px;
+}
+
+.founderBio {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--on-primary-mute);
+  margin-top: var(--spacing-md);
+}
+
+/* Members */
+.members {
+  background: var(--canvas-night-soft);
+}
+
+.memberGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--hairline-on-dark);
+  border: 1px solid var(--hairline-on-dark);
+}
+
+.memberCard {
+  background: var(--canvas-night-soft);
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  padding: var(--spacing-xxl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.memberCard:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.memberCardDisabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.memberCardDisabled:hover {
+  background: var(--canvas-night-soft);
+}
+
+.memberCard:focus-visible {
+  outline: 2px solid var(--on-primary);
+  outline-offset: -2px;
+}
+
+.memberTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.memberName {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--on-primary);
+}
+
+.memberType {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.memberRole {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--on-primary-mute);
+}
+
+/* Member Detail */
+.memberDetail {
+  background: var(--canvas-night);
+}
+
+.memberDetailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-huge);
+  align-items: center;
+}
+
+.memberDetailImageWrap {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: var(--rounded-xs);
+}
+
+.memberDetailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.memberDetailInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 960px) {
+  .hero {
+    height: 54vh;
+    min-height: 360px;
+  }
+
+  .founderGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xxl);
+  }
+
+  .founderImageWrap,
+  .memberDetailImageWrap {
+    aspect-ratio: 16/9;
+  }
+
+  .memberDetailGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xxl);
+  }
+
+  .memberGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .memberGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .memberCard {
+    padding: var(--spacing-xl);
+  }
+}
