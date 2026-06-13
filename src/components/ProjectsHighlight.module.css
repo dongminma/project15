@@ -96,18 +96,10 @@
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .grid .card:last-child {
-    display: none;
-  }
 }
 
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
-  }
-
-  .grid .card:last-child {
-    display: block;
   }
 }

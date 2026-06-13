@@ -19,17 +19,10 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window === "undefined") {
-      return "en";
-    }
-    const saved = window.localStorage.getItem("nomadic-language");
-    return saved === "en" || saved === "ko" ? saved : "en";
-  });
+  const [language, setLanguageState] = useState<Language>("en");
 
   function setLanguage(nextLanguage: Language) {
     setLanguageState(nextLanguage);
-    window.localStorage.setItem("nomadic-language", nextLanguage);
   }
 
   const value = useMemo(

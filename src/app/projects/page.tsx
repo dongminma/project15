@@ -15,8 +15,7 @@ const PROJECTS = [
       ko: "단발성 작업이 아니라 계속 축적되는 시네마틱 시리즈이자 비주얼 실험의 아카이브입니다.",
     },
     tag: "Series / Cinematic",
-    image: "/media/projects-hero.png",
-    videoSrc: "/media/HUNTERS/hunters_01.mp4",
+    image: "/media/hertz-series.jpg",
   },
   {
     num: "02",
@@ -27,8 +26,7 @@ const PROJECTS = [
       ko: "NOMADIC 세계관의 씨앗이 된 시작점이자 세계관 프로토타입으로, 졸업 작업에서 출발한 프로젝트입니다.",
     },
     tag: "Worldbuilding / Architecture",
-    image: "/media/architect/nomadic_city.jpg",
-    videoSrc: "/media/nomadic city_movie/movie_01.mp4",
+    image: "/media/nomadic-city.jpg",
   },
   {
     num: "03",
@@ -39,8 +37,7 @@ const PROJECTS = [
       ko: "AI를 활용한 실사화 실험으로, 기존 이야기를 감정적 리얼리즘과 시네마틱 기법으로 재해석합니다.",
     },
     tag: "AI + Live Action",
-    image: "/media/journal-hero.png",
-    videoSrc: "/media/reality.mp4",
+    image: "/media/live-action-studies.jpg",
   },
   {
     num: "04",
@@ -134,25 +131,12 @@ export default function ProjectsPage() {
             <div className="container-wide">
               <div className={styles.projectGrid}>
                 <div className={styles.projectImageWrap}>
-                  {project.videoSrc ? (
-                    <video
-                      className={styles.projectMedia}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      poster={project.image}
-                    >
-                      <source src={project.videoSrc} type="video/mp4" />
-                    </video>
-                  ) : (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className={styles.projectMedia}
-                      loading="lazy"
-                    />
-                  )}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className={styles.projectMedia}
+                    loading="lazy"
+                  />
                 </div>
                 <div className={styles.projectInfo}>
                   <span className={styles.projectNum}>{project.num}.</span>
