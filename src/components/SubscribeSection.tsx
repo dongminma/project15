@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
 import styles from "./SubscribeSection.module.css";
 
 export default function SubscribeSection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const { text } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,19 +32,29 @@ export default function SubscribeSection() {
           <div className={styles.left}>
             <h2 className={styles.title}>Stay Updated</h2>
             <p className={styles.desc}>
-              Subscribe to receive updates on new projects, journal entries, and
-              world expansion.
+              {text({
+                en: "Subscribe to receive updates on new projects, journal entries, and world expansion.",
+                ko: "새 프로젝트, 저널 글, 세계관 확장 소식을 받아보세요.",
+              })}
             </p>
           </div>
 
           <div className={styles.right}>
             {submitted ? (
-              <p className={styles.thanks}>Thank you for subscribing.</p>
+              <p className={styles.thanks}>
+                {text({
+                  en: "Thank you for subscribing.",
+                  ko: "구독해주셔서 감사합니다.",
+                })}
+              </p>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={text({
+                    en: "Enter your email",
+                    ko: "이메일을 입력하세요",
+                  })}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={styles.input}

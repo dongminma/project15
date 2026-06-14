@@ -29,7 +29,7 @@ const FOUNDER: Member = {
   image: "/media/profile.jpg",
   bio: {
     en: "Trained in architecture, Dongmin Ma explores the boundary between reality and imagination through architecture, film, AI-generated imagery, and worldbuilding.",
-    ko: "건축을 전공한 마동민은 건축, 영화, AI 생성 이미지, 세계관 구축을 통해 현실과 상상의 경계를 탐구합니다.",
+    ko: "건축을 전공한 마동민은 건축, 영상, AI 생성 이미지, 세계관 구축을 통해 현실과 상상의 경계를 탐구합니다.",
   },
 };
 
@@ -45,7 +45,7 @@ const MEMBERS: Member[] = [
     image: "/media/kim-sungsoo.png",
     bio: {
       en: "Kim Sungsoo is a developer and AI specialist trained in architecture. His work connects automation, software development, and AI-driven systems for creative and practical workflows.",
-      ko: "김성수는 건축을 전공한 개발자이자 AI 관련 전문가입니다. 자동화, 프로그램 개발, AI 기반 시스템을 연결해 창작과 실무에 필요한 워크플로를 구축합니다.",
+      ko: "김성수는 건축을 전공한 개발자이자 AI 전문가입니다. 자동화, 프로그램 개발, AI 기반 시스템을 연결해 창작과 실무에 필요한 워크플로를 구축합니다.",
     },
   },
   {
@@ -53,12 +53,12 @@ const MEMBERS: Member[] = [
     type: "FICTIONAL",
     role: {
       en: "Philosopher / Explorer / Novelist / Historian of NOMADIC CITY",
-      ko: "철학자 / 탐험가 / 소설가 / 노마딕시티의 역사학자",
+      ko: "철학자 / 탐험가 / 소설가 / NOMADIC CITY의 역사학자",
     },
     image: "/media/benjamin-je.png",
     bio: {
       en: "Benjamin Je is a philosopher, explorer, and novelist who wanders in search of the lost history of humanity. He studies the future and present condition of humankind, the law of equivalent exchange, and the fragile balance between memory, civilization, and survival. Within NOMADIC CITY, he records history as both witness and questioner.",
-      ko: "밴자민 제는 사라진 인류의 역사를 찾아 헤매는 철학자이자 탐험가, 소설가입니다. 그는 인류의 현재와 미래, 등가교환의 법칙, 기억과 문명과 생존 사이의 균형을 연구하며, NOMADIC CITY 안에서 목격자이자 질문자로서 역사를 기록합니다.",
+      ko: "벤자민 제는 사라진 인류의 역사를 찾아 떠도는 철학자이자 탐험가, 소설가입니다. 그는 인류의 현재와 미래, 등가교환의 법칙, 기억과 문명과 생존 사이의 균형을 연구하며 NOMADIC CITY 안에서 목격자이자 질문자로 역사를 기록합니다.",
     },
   },
   {
@@ -99,7 +99,6 @@ export default function AboutPage() {
 
   return (
     <div className={styles.page}>
-      {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
           <img
@@ -128,20 +127,19 @@ export default function AboutPage() {
             <p>
               {text({
                 en: "NOMADIC was founded by Dongmin Ma as a personal archive for architectural imagination, cinematic experiments, and AI-based visual storytelling.",
-                ko: "NOMADIC은 마동민이 건축적 상상력, 시네마틱 실험, AI 기반 비주얼 스토리텔링을 기록하기 위해 시작한 개인 아카이브입니다.",
+                ko: "NOMADIC은 마동민이 건축적 상상, 시네마틱 실험, AI 기반 비주얼 스토리텔링을 기록하기 위해 시작한 개인 아카이브입니다.",
               })}
             </p>
             <p>
               {text({
                 en: "It begins with one person's work, but it is designed to expand into a small constellation of collaborators, fictional citizens, and artificial creators.",
-                ko: "한 사람의 작업에서 시작하지만, 협업자와 가상의 시민, 인공 창작자들이 함께 확장되는 작은 세계로 설계되어 있습니다.",
+                ko: "한 사람의 작업에서 시작하지만, 협업자와 가상의 시민, 인공 창작자들이 함께 확장되는 작은 세계로 설계되었습니다.",
               })}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Founder */}
       <section className={`section section-border ${styles.founder}`}>
         <div className="container-wide">
           <div className={styles.founderGrid}>
@@ -168,9 +166,7 @@ export default function AboutPage() {
             >
               <span className={styles.label}>FOUNDER</span>
               <h2 className={styles.founderName}>DONGMIN MA</h2>
-              <p className={styles.founderRole}>
-                {text(FOUNDER.role)}
-              </p>
+              <p className={styles.founderRole}>{text(FOUNDER.role)}</p>
               <p className={styles.founderBio}>
                 {text(FOUNDER.bio ?? { en: "", ko: "" })}
               </p>
@@ -179,7 +175,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Members */}
       <section className={`section section-border ${styles.members}`}>
         <div className="container-wide">
           <div className="section-header">

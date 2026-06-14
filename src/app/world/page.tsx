@@ -12,7 +12,7 @@ const CATEGORIES = [
     title: "ATLAS",
     desc: { en: "Maps, layers, and geographies.", ko: "지도, 레이어, 지리 체계." },
     longDesc: {
-      en: "Explore the geographic foundations of NOMADIC — mapping spatial layers and territorial constructs of the virtual city.",
+      en: "Explore the geographic foundations of NOMADIC by mapping spatial layers and territorial constructs of the virtual city.",
       ko: "가상 도시의 공간적 레이어와 영토 구조를 매핑하며 NOMADIC의 지리적 기반을 탐구합니다.",
     },
   },
@@ -30,7 +30,7 @@ const CATEGORIES = [
     title: "CITIZENS",
     desc: { en: "People and Beings.", ko: "사람과 존재들." },
     longDesc: {
-      en: "Meet the inhabitants — founders, fictional characters, AI collaborators, and future citizens of the NOMADIC world.",
+      en: "Meet the inhabitants: founders, fictional characters, AI collaborators, and future citizens of the NOMADIC world.",
       ko: "창립자, 가상 인물, AI 협업자, 미래 시민 등 NOMADIC 세계의 거주자들을 만납니다.",
     },
   },
@@ -39,7 +39,7 @@ const CATEGORIES = [
     title: "MOBILITY",
     desc: { en: "Systems that move us.", ko: "이동을 가능하게 하는 시스템." },
     longDesc: {
-      en: "Tubes, capsules, bridges, and drone-based transport — the future mobility infrastructure threading through the city.",
+      en: "Tubes, capsules, bridges, and drone-based transport form the future mobility infrastructure threading through the city.",
       ko: "튜브, 캡슐, 브리지, 드론 운송 등 도시를 관통하는 미래형 이동 인프라를 다룹니다.",
     },
   },
@@ -48,7 +48,7 @@ const CATEGORIES = [
     title: "INFRASTRUCTURE",
     desc: { en: "The backbone of possibility.", ko: "가능성을 지탱하는 기반." },
     longDesc: {
-      en: "Environmental controls, structural systems, data networks, and survival mechanisms that sustain the virtual world.",
+      en: "Environmental controls, structural systems, data networks, and survival mechanisms sustain the virtual world.",
       ko: "가상 세계를 유지하는 환경 제어, 구조 시스템, 데이터 네트워크, 생존 메커니즘을 설명합니다.",
     },
   },
@@ -66,8 +66,8 @@ const CATEGORIES = [
     title: "FRAGMENTS",
     desc: { en: "Collected notes and visuals.", ko: "수집된 노트와 이미지." },
     longDesc: {
-      en: "Images, artifacts, fragmentary ideas, memos, and collected memories — the raw material of worldbuilding.",
-      ko: "이미지, 아티팩트, 단편적 아이디어, 메모, 수집된 기억처럼 세계관을 만드는 원재료입니다.",
+      en: "Images, artifacts, fragmentary ideas, memos, and collected memories form the raw material of worldbuilding.",
+      ko: "이미지, 아티팩트, 단편적 아이디어, 메모, 수집된 기억처럼 세계관을 만드는 원재료를 모아둡니다.",
     },
   },
   {
@@ -75,7 +75,7 @@ const CATEGORIES = [
     title: "RULES",
     desc: { en: "Principles for coexisting.", ko: "공존을 위한 원칙." },
     longDesc: {
-      en: "Physical laws, social norms, and governance frameworks that enable coexistence within the moving city.",
+      en: "Physical laws, social norms, and governance frameworks enable coexistence within the moving city.",
       ko: "움직이는 도시 안에서 공존을 가능하게 하는 물리 법칙, 사회 규범, 운영 체계를 다룹니다.",
     },
   },
@@ -95,7 +95,6 @@ export default function WorldPage() {
 
   return (
     <div className={styles.page}>
-      {/* Hero with Video */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
           <video
@@ -132,7 +131,6 @@ export default function WorldPage() {
         </div>
       </section>
 
-      {/* Categories Grid */}
       <section className={styles.categories}>
         <div className="container-wide">
           <div className={styles.grid}>
@@ -164,7 +162,6 @@ export default function WorldPage() {
         </div>
       </section>
 
-      {/* Scene Detail */}
       <section ref={sceneRef} className={`section section-border ${styles.scene}`}>
         <div className="container-wide">
           <motion.div

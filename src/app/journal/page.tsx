@@ -21,8 +21,8 @@ const ARTICLES = [
     title: "Why I started NOMADIC",
     category: "ESSAYS",
     desc: {
-      en: "The story behind NOMADIC — why one architect decided to build a personal archive of imagined worlds.",
-      ko: "한 건축가가 상상된 세계의 개인 아카이브를 만들기로 한 NOMADIC의 시작 이야기입니다.",
+      en: "The story behind NOMADIC: why one architect decided to build a personal archive of imagined worlds.",
+      ko: "한 건축가가 상상 속 세계를 개인 아카이브로 만들기로 한 이유와 NOMADIC의 시작에 대한 이야기입니다.",
     },
   },
   {
@@ -40,7 +40,7 @@ const ARTICLES = [
     category: "RESEARCH FILES",
     desc: {
       en: "Exploring the concept of manufactured nostalgia and AI-generated memories.",
-      ko: "제조된 향수와 AI가 만들어낸 기억이라는 개념을 탐구합니다.",
+      ko: "제조된 향수와 AI가 만들어내는 기억이라는 개념을 탐구합니다.",
     },
   },
   {
@@ -49,7 +49,7 @@ const ARTICLES = [
     category: "ESSAYS",
     desc: {
       en: "What happens to the profession of architecture when AI can generate buildings faster than humans can design them?",
-      ko: "AI가 사람이 설계하는 속도보다 빠르게 건축 이미지를 생성할 때, 건축이라는 직업은 어떻게 바뀔까요?",
+      ko: "AI가 사람이 설계하는 속도보다 빠르게 건축 이미지를 만들 수 있을 때, 건축이라는 직업은 어떻게 바뀌는지에 대한 글입니다.",
     },
   },
   {
@@ -57,7 +57,7 @@ const ARTICLES = [
     title: "The city that keeps moving",
     category: "WORLD BUILDING",
     desc: {
-      en: "Notes on designing a city that never settles — the philosophical foundations of NOMADIC CITY.",
+      en: "Notes on designing a city that never settles: the philosophical foundations of NOMADIC CITY.",
       ko: "정착하지 않는 도시를 설계하기 위한 노트이자 NOMADIC CITY의 철학적 기반입니다.",
     },
   },
@@ -66,7 +66,7 @@ const ARTICLES = [
     title: "Notes on failure, boredom, and unfinished projects",
     category: "FRAGMENTS",
     desc: {
-      en: "Honest reflections on the creative process — embracing incompleteness as a methodology.",
+      en: "Honest reflections on the creative process: embracing incompleteness as a methodology.",
       ko: "불완전함을 하나의 방법론으로 받아들이는 창작 과정에 대한 솔직한 기록입니다.",
     },
   },
@@ -83,7 +83,6 @@ export default function JournalPage() {
 
   return (
     <div className={styles.page}>
-      {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
           <img
@@ -128,7 +127,6 @@ export default function JournalPage() {
         </div>
       </section>
 
-      {/* Filter Tabs */}
       <section className={styles.filters}>
         <div className="container-wide">
           <div className={styles.tabs}>
@@ -145,7 +143,6 @@ export default function JournalPage() {
         </div>
       </section>
 
-      {/* Articles */}
       <section className={styles.articles}>
         <div className="container-wide">
           {filtered.map((article, i) => (

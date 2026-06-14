@@ -3,18 +3,21 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
 import styles from "./WorldSummary.module.css";
 
 const CATEGORIES = [
-  { title: "ATLAS", desc: "Maps and Territories" },
-  { title: "DISTRICTS", desc: "Areas and Zones" },
-  { title: "CITIZENS", desc: "People and Beings" },
-  { title: "MOBILITY", desc: "Movement Systems" },
-  { title: "INFRASTRUCTURE", desc: "Systems and Networks" },
-  { title: "TIMELINE", desc: "History and Future" },
+  { title: "ATLAS", desc: { en: "Maps and Territories", ko: "지도와 영토" } },
+  { title: "DISTRICTS", desc: { en: "Areas and Zones", ko: "구역과 지역" } },
+  { title: "CITIZENS", desc: { en: "People and Beings", ko: "사람과 존재들" } },
+  { title: "MOBILITY", desc: { en: "Movement Systems", ko: "이동 시스템" } },
+  { title: "INFRASTRUCTURE", desc: { en: "Systems and Networks", ko: "시스템과 네트워크" } },
+  { title: "TIMELINE", desc: { en: "History and Future", ko: "역사와 미래" } },
 ];
 
 export default function WorldSummary() {
+  const { text } = useLanguage();
+
   return (
     <section className={`section section-border ${styles.world}`} id="world-summary">
       <div className="container-wide">
@@ -38,7 +41,7 @@ export default function WorldSummary() {
               <Link href="/world" className={styles.cardLink}>
                 <span className={styles.index}>0{i + 1}</span>
                 <h3 className={styles.title}>{cat.title}</h3>
-                <p className={styles.desc}>{cat.desc}</p>
+                <p className={styles.desc}>{text(cat.desc)}</p>
                 <ArrowRight size={14} className={styles.arrow} />
               </Link>
             </motion.div>

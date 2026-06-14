@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Play, ArrowRight, X } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
@@ -10,7 +10,18 @@ const HERO_VIDEO_SRC = "/media/nomadic-main-reel.mp4";
 
 export default function HeroSection() {
   const [showReel, setShowReel] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { text } = useLanguage();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.play().catch(() => {
+      // Some mobile browsers delay autoplay until the first user gesture.
+    });
+  }, []);
 
   return (
     <>
@@ -18,12 +29,15 @@ export default function HeroSection() {
         {/* Background Video */}
         <div className={styles.videoBg}>
           <video
+            ref={videoRef}
             className={styles.video}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
+            controls={false}
+            disablePictureInPicture
           >
             <source src={HERO_VIDEO_SRC} type="video/mp4" />
           </video>

@@ -1,10 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
 import styles from "./Footer.module.css";
 
 const FOOTER_COLUMNS = [
   {
     title: "NOMADIC",
-    description: "A personal archive today.\nA collective city tomorrow.",
+    description: {
+      en: "A personal archive today.\nA collective city tomorrow.",
+      ko: "오늘의 개인 아카이브.\n내일의 공동 도시.",
+    },
     links: [],
   },
   {
@@ -57,6 +63,8 @@ const FOOTER_COLUMNS = [
 ];
 
 export default function Footer() {
+  const { text } = useLanguage();
+
   return (
     <footer className={styles.footer} id="footer">
       <div className={styles.inner}>
@@ -65,7 +73,7 @@ export default function Footer() {
             <div key={col.title} className={styles.column}>
               <h4 className={styles.columnTitle}>{col.title}</h4>
               {col.description && (
-                <p className={styles.description}>{col.description}</p>
+                <p className={styles.description}>{text(col.description)}</p>
               )}
               {col.links.length > 0 && (
                 <ul className={styles.linkList}>
