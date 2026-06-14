@@ -6,6 +6,8 @@ import { Play, ArrowRight, X } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 import styles from "./HeroSection.module.css";
 
+const HERO_VIDEO_SRC = "/media/nomadic-main-reel.mp4";
+
 export default function HeroSection() {
   const [showReel, setShowReel] = useState(false);
   const { text } = useLanguage();
@@ -23,7 +25,7 @@ export default function HeroSection() {
             playsInline
             preload="auto"
           >
-            <source src="/media/hero.mp4" type="video/mp4" />
+            <source src={HERO_VIDEO_SRC} type="video/mp4" />
           </video>
           <div className={styles.overlay} />
         </div>
@@ -95,7 +97,7 @@ export default function HeroSection() {
               playsInline
               onClick={(e) => e.stopPropagation()}
             >
-              <source src="/media/hero.mp4" type="video/mp4" />
+              <source src={HERO_VIDEO_SRC} type="video/mp4" />
             </video>
           </motion.div>
         )}
