@@ -2,104 +2,71 @@
   background: var(--canvas-night);
 }
 
-.grid {
+.feature {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-xl);
-}
-
-.card {
-  overflow: hidden;
-}
-
-.cardLink {
-  display: block;
-  transition: opacity 0.3s ease;
-}
-
-.cardLink:hover {
-  opacity: 0.9;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.8fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
 }
 
 .imageWrap {
   position: relative;
-  aspect-ratio: 3/4;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: var(--rounded-xs);
-  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--hairline-on-dark);
+  background: #050505;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  display: block;
 }
 
-.cardLink:hover .image {
-  transform: scale(1.03);
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.4) 0%,
-    transparent 50%
-  );
-}
-
-.cardContent {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xxs);
-}
-
-.num {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.96px;
+.copy {
+  max-width: 620px;
   color: var(--on-primary-mute);
-  text-transform: uppercase;
+  font-size: 17px;
+  line-height: 1.75;
 }
 
-.cardTitle {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
+.copy p + p {
+  margin-top: var(--spacing-md);
+}
+
+.lead {
   color: var(--on-primary);
-}
-
-.subtitle {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--on-primary-mute);
-}
-
-.tag {
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.96px;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.08;
   text-transform: uppercase;
-  color: var(--on-primary-mute);
-  margin-top: var(--spacing-xs);
-  padding: var(--spacing-xxs) var(--spacing-sm);
-  border: 1px solid var(--hairline-on-dark);
-  border-radius: var(--rounded-pill);
-  display: inline-block;
-  width: fit-content;
+}
+
+.closing {
+  color: var(--on-primary);
+  font-weight: 700;
 }
 
 @media (max-width: 960px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  .feature {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .copy {
+    max-width: 760px;
   }
 }
 
 @media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .imageWrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .copy {
+    font-size: 15px;
+    line-height: 1.7;
   }
 }

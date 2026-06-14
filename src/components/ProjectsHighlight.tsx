@@ -5,51 +5,6 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import styles from "./ProjectsHighlight.module.css";
 
-const PROJECTS = [
-  {
-    num: "01",
-    title: "HERTZ SERIES",
-    subtitle: "Cinematic Experiments",
-    tag: "Series / Cinematic",
-    image: "/media/hertz-series.jpg",
-  },
-  {
-    num: "02",
-    title: "NOMADIC CITY",
-    subtitle: "Hong Kong Prototype",
-    tag: "Worldbuilding / Architecture",
-    image: "/media/nomadic-city.jpg",
-  },
-  {
-    num: "03",
-    title: "LIVE ACTION STUDIES",
-    subtitle: "Emotional Realism",
-    tag: "AI + Live Action",
-    image: "/media/live-action-studies.jpg",
-  },
-  {
-    num: "04",
-    title: "NOMADIC ARCHITECTURE",
-    subtitle: "Real & Virtual",
-    tag: "Architecture / Design",
-    image: "/media/architect/nomadic-architecture-04.png",
-  },
-  {
-    num: "05",
-    title: "VISUAL EXPERIMENTS",
-    subtitle: "Image / Mood / Character",
-    tag: "Image / Mood",
-    image: "/media/nomadic city_story/floating_structure.png",
-  },
-  {
-    num: "06",
-    title: "WRITING & SCENARIOS",
-    subtitle: "Narratives & Worldbuilding",
-    tag: "Narrative / Text",
-    image: "/media/nomadic city_story/modular_habitat.jpg",
-  },
-];
-
 export default function ProjectsHighlight() {
   return (
     <section className={`section section-border ${styles.projects}`} id="projects-highlight">
@@ -61,35 +16,43 @@ export default function ProjectsHighlight() {
           </Link>
         </div>
 
-        <div className={styles.grid}>
-          {PROJECTS.map((project, i) => (
-            <motion.div
-              key={project.num}
-              className={styles.card}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
-            >
-              <Link href="/projects" className={styles.cardLink}>
-                <div className={styles.imageWrap}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className={styles.image}
-                    loading="lazy"
-                  />
-                  <div className={styles.imageOverlay} />
-                </div>
-                <div className={styles.cardContent}>
-                  <span className={styles.num}>{project.num}.</span>
-                  <h3 className={styles.cardTitle}>{project.title}</h3>
-                  <p className={styles.subtitle}>{project.subtitle}</p>
-                  <span className={styles.tag}>{project.tag}</span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+        <div className={styles.feature}>
+          <motion.div
+            className={styles.imageWrap}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <img
+              src="/media/nomadic-intro-projects.png"
+              alt="Nomadic speculative city"
+              className={styles.image}
+              loading="lazy"
+            />
+          </motion.div>
+
+          <motion.div
+            className={styles.copy}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, delay: 0.12, ease: "easeOut" }}
+          >
+            <p className={styles.lead}>
+              The future belongs to those who can reinvent themselves.
+            </p>
+            <p>
+              Nomadic is a multidisciplinary creative studio exploring architecture,
+              cinematic storytelling, artificial intelligence, and speculative futures.
+              Each project is an experiment, each world a question, and each story a
+              glimpse into what humanity might become.
+            </p>
+            <p>
+              We believe everyone will need a second identity in the age of AI.
+            </p>
+            <p className={styles.closing}>Welcome to Nomadic.</p>
+          </motion.div>
         </div>
       </div>
     </section>

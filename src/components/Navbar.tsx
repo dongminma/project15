@@ -14,8 +14,8 @@ const NAV_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "YouTube", href: "https://youtube.com" },
+  { label: "Instagram", href: "https://www.instagram.com/dongmin009/" },
+  { label: "YouTube", href: "https://www.youtube.com/@theterrortubbies" },
 ];
 
 export default function Navbar() {

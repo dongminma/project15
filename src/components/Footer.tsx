@@ -50,8 +50,8 @@ const FOOTER_COLUMNS = [
     title: "CONTACT",
     links: [
       { label: "Email", href: "mailto:hello@nomadic.world" },
-      { label: "Instagram", href: "https://instagram.com", external: true },
-      { label: "YouTube", href: "https://youtube.com", external: true },
+      { label: "Instagram", href: "https://www.instagram.com/dongmin009/", external: true },
+      { label: "YouTube", href: "https://www.youtube.com/@theterrortubbies", external: true },
     ],
   },
 ];
