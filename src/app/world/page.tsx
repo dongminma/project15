@@ -1,185 +1,122 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
-import styles from "./page.module.css";
+import styles from "../worldbook.module.css";
 
-const CATEGORIES = [
+const CHAPTERS = [
   {
-    num: "01",
-    title: "ATLAS",
-    desc: { en: "Maps, layers, and geographies.", ko: "지도, 레이어, 지리 체계." },
-    longDesc: {
-      en: "Explore the geographic foundations of NOMADIC by mapping spatial layers and territorial constructs of the virtual city.",
-      ko: "가상 도시의 공간적 레이어와 영토 구조를 매핑하며 NOMADIC의 지리적 기반을 탐구합니다.",
+    number: "01",
+    title: { en: "Architecture", ko: "건축" },
+    lead: {
+      en: "Structures for a civilization that cannot settle.",
+      ko: "정착할 수 없는 문명을 위한 구조체.",
+    },
+    copy: {
+      en: "Cities, vessels, monuments, and modular habitats built to change position, scale, and meaning.",
+      ko: "위치와 규모, 의미를 바꾸도록 설계된 도시, 선박, 기념물과 모듈형 거주지.",
     },
   },
   {
-    num: "02",
-    title: "DISTRICTS",
-    desc: { en: "Zones, neighborhoods, and atmospheres.", ko: "구역, 이웃, 분위기." },
-    longDesc: {
-      en: "Navigate through distinct vertical city zones, each with its own cultural identity, density, and ambient character.",
-      ko: "각기 다른 문화적 정체성, 밀도, 분위기를 가진 수직 도시 구역을 따라 이동합니다.",
+    number: "02",
+    title: { en: "Mobility", ko: "이동" },
+    lead: {
+      en: "Movement is not transport. It is government.",
+      ko: "이동은 운송이 아니다. 그것은 통치다.",
+    },
+    copy: {
+      en: "Moving cities, migration corridors, autonomous infrastructure, and systems designed for permanent departure.",
+      ko: "움직이는 도시, 이주 회랑, 자율 인프라와 영구적인 출발을 위해 설계된 시스템.",
     },
   },
   {
-    num: "03",
-    title: "CITIZENS",
-    desc: { en: "People and Beings.", ko: "사람과 존재들." },
-    longDesc: {
-      en: "Meet the inhabitants: founders, fictional characters, AI collaborators, and future citizens of the NOMADIC world.",
-      ko: "창립자, 가상 인물, AI 협업자, 미래 시민 등 NOMADIC 세계의 거주자들을 만납니다.",
+    number: "03",
+    title: { en: "Belief", ko: "믿음" },
+    lead: {
+      en: "New intelligence produces new gods.",
+      ko: "새로운 지능은 새로운 신을 만든다.",
+    },
+    copy: {
+      en: "AI religions, Cyber Monks, machine rituals, and the forms of faith that emerge after certainty collapses.",
+      ko: "AI 종교, 사이버 몽크, 기계 의식과 확실성이 무너진 뒤 등장하는 새로운 믿음.",
     },
   },
   {
-    num: "04",
-    title: "MOBILITY",
-    desc: { en: "Systems that move us.", ko: "이동을 가능하게 하는 시스템." },
-    longDesc: {
-      en: "Tubes, capsules, bridges, and drone-based transport form the future mobility infrastructure threading through the city.",
-      ko: "튜브, 캡슐, 브리지, 드론 운송 등 도시를 관통하는 미래형 이동 인프라를 다룹니다.",
+    number: "04",
+    title: { en: "Society", ko: "사회" },
+    lead: {
+      en: "A citizen may exist before a nation.",
+      ko: "시민은 국가보다 먼저 존재할 수 있다.",
+    },
+    copy: {
+      en: "Identity, citizenship, class, labor, economy, and power inside a world without fixed borders.",
+      ko: "고정된 국경이 없는 세계 안의 정체성, 시민권, 계급, 노동, 경제와 권력.",
     },
   },
   {
-    num: "05",
-    title: "INFRASTRUCTURE",
-    desc: { en: "The backbone of possibility.", ko: "가능성을 지탱하는 기반." },
-    longDesc: {
-      en: "Environmental controls, structural systems, data networks, and survival mechanisms sustain the virtual world.",
-      ko: "가상 세계를 유지하는 환경 제어, 구조 시스템, 데이터 네트워크, 생존 메커니즘을 설명합니다.",
+    number: "05",
+    title: { en: "Survival", ko: "생존" },
+    lead: {
+      en: "Every city is also an ark.",
+      ko: "모든 도시는 하나의 방주이기도 하다.",
+    },
+    copy: {
+      en: "Floods, disaster protocols, resource systems, Noah's Ark, and the architecture of collective survival.",
+      ko: "홍수, 재난 프로토콜, 자원 시스템, 노아의 방주와 집단 생존을 위한 건축.",
     },
   },
   {
-    num: "06",
-    title: "TIMELINE",
-    desc: { en: "Key events across eras.", ko: "시대별 주요 사건." },
-    longDesc: {
-      en: "A chronological archive of past events, present milestones, and projected futures within the NOMADIC universe.",
-      ko: "NOMADIC 세계 안의 과거 사건, 현재의 이정표, 예측된 미래를 시간순으로 정리한 아카이브입니다.",
+    number: "06",
+    title: { en: "Narrative", ko: "서사" },
+    lead: {
+      en: "History begins as a rumor.",
+      ko: "역사는 소문으로 시작된다.",
     },
-  },
-  {
-    num: "07",
-    title: "FRAGMENTS",
-    desc: { en: "Collected notes and visuals.", ko: "수집된 노트와 이미지." },
-    longDesc: {
-      en: "Images, artifacts, fragmentary ideas, memos, and collected memories form the raw material of worldbuilding.",
-      ko: "이미지, 아티팩트, 단편적 아이디어, 메모, 수집된 기억처럼 세계관을 만드는 원재료를 모아둡니다.",
-    },
-  },
-  {
-    num: "08",
-    title: "RULES",
-    desc: { en: "Principles for coexisting.", ko: "공존을 위한 원칙." },
-    longDesc: {
-      en: "Physical laws, social norms, and governance frameworks enable coexistence within the moving city.",
-      ko: "움직이는 도시 안에서 공존을 가능하게 하는 물리 법칙, 사회 규범, 운영 체계를 다룹니다.",
+    copy: {
+      en: "Hunters, characters, conflicts, disappearances, and the evolving timeline of the NOMADIC world.",
+      ko: "헌터즈, 인물, 갈등, 실종과 계속 확장되는 NOMADIC 세계의 타임라인.",
     },
   },
 ];
 
 export default function WorldPage() {
-  const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
-  const sceneRef = useRef<HTMLElement>(null);
   const { text } = useLanguage();
-
-  function openScene(category: (typeof CATEGORIES)[number]) {
-    setActiveCategory(category);
-    window.setTimeout(() => {
-      sceneRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-  }
 
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroBg}>
-          <video
-            className={styles.heroVideo}
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src="/media/imagined.mp4" type="video/mp4" />
-          </video>
-          <div className={styles.heroOverlay} />
-        </div>
-        <div className={`container-wide ${styles.heroContent}`}>
-          <motion.h1
-            className="display-xxl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            NOMADIC WORLD
-          </motion.h1>
-          <motion.p
-            className={styles.heroDesc}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {text({
-              en: "A living archive of districts, citizens, systems, and possible futures.",
-              ko: "구역, 시민, 시스템, 가능한 미래를 담은 살아 있는 아카이브입니다.",
-            })}
-          </motion.p>
-        </div>
-      </section>
-
-      <section className={styles.categories}>
-        <div className="container-wide">
-          <div className={styles.grid}>
-            {CATEGORIES.map((cat, i) => (
-              <motion.button
-                key={cat.num}
-                type="button"
-                className={`${styles.card} ${
-                  activeCategory.num === cat.num ? styles.cardActive : ""
-                }`}
-                onClick={() => openScene(cat)}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-              >
-                <div className={styles.cardInner}>
-                  <div className={styles.cardTop}>
-                    <span className={styles.cardNum}>{cat.num}</span>
-                    <ArrowRight size={14} className={styles.cardArrow} />
-                  </div>
-                  <h3 className={styles.cardTitle}>{cat.title}</h3>
-                  <p className={styles.cardSubtitle}>{text(cat.desc)}</p>
-                  <p className={styles.cardDesc}>{text(cat.longDesc)}</p>
-                </div>
-              </motion.button>
-            ))}
+      <section
+        className={styles.hero}
+        style={{ backgroundImage: "url('/media/nomadic-city.jpg')" }}
+      >
+        <p className={styles.eyebrow}>SECTION 01 / WORLD SYSTEM</p>
+        <div>
+          <h1>WORLD</h1>
+          <div className={styles.heroBottom}>
+            <p className={styles.meta}>VERSION 0.1 / OPEN FILE</p>
+            <p>
+              {text({
+                en: "Not a catalogue of works. A field manual for a civilization still being invented.",
+                ko: "작품 목록이 아닙니다. 아직 발명 중인 문명을 위한 현장 설명서입니다.",
+              })}
+            </p>
           </div>
         </div>
       </section>
-
-      <section ref={sceneRef} className={`section section-border ${styles.scene}`}>
-        <div className="container-wide">
-          <motion.div
-            key={activeCategory.num}
-            className={styles.sceneGrid}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-          >
-            <div>
-              <span className={styles.sceneNum}>{activeCategory.num}</span>
-              <h2 className={styles.sceneTitle}>{activeCategory.title}</h2>
-            </div>
-            <div className={styles.sceneCopy}>
-              <p className={styles.sceneLead}>{text(activeCategory.desc)}</p>
-              <p>{text(activeCategory.longDesc)}</p>
-            </div>
-          </motion.div>
+      <section className={styles.index}>
+        <div className={styles.indexHeader}>
+          <span className={styles.meta}>WORLD INDEX</span>
+          <span className={styles.meta}>06 CHAPTERS</span>
+        </div>
+        <div className={styles.list}>
+          {CHAPTERS.map((chapter) => (
+            <article className={styles.row} key={chapter.number}>
+              <span className={styles.number}>{chapter.number}</span>
+              <h2>{chapter.title.en}</h2>
+              <p className={styles.copy}>
+                <strong>{text(chapter.lead)}</strong>
+                {text(chapter.copy)}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
     </div>

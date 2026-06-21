@@ -5,30 +5,17 @@ import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageProvider";
 
 export const metadata: Metadata = {
-  title: "NOMADIC — A personal archive today. A collective city tomorrow.",
-  description:
-    "NOMADIC is an archive of artificial worlds, cinematic experiments, and unfinished cities. Founded by Dongmin Ma.",
-  keywords: [
-    "NOMADIC",
-    "architecture",
-    "cinematic",
-    "AI",
-    "worldbuilding",
-    "Dongmin Ma",
-  ],
+  title: "NOMADIC — A World Under Construction",
+  description: "NOMADIC is a world-building project for those who refuse to stand still.",
+  keywords: ["NOMADIC", "worldbuilding", "architecture", "cinema", "future society"],
   openGraph: {
     title: "NOMADIC",
-    description:
-      "A personal archive today. A collective city tomorrow.",
+    description: "A World Under Construction.",
     type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>

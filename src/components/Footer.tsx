@@ -4,112 +4,42 @@ import Link from "next/link";
 import { useLanguage } from "./LanguageProvider";
 import styles from "./Footer.module.css";
 
-const FOOTER_COLUMNS = [
-  {
-    title: "NOMADIC",
-    description: {
-      en: "A personal archive today.\nA collective city tomorrow.",
-      ko: "오늘의 개인 아카이브.\n내일의 공동 도시.",
-    },
-    links: [],
-  },
-  {
-    title: "PROJECTS",
-    links: [
-      { label: "All Projects", href: "/projects" },
-      { label: "Films", href: "/projects" },
-      { label: "Cities", href: "/projects" },
-      { label: "Visuals", href: "/projects" },
-      { label: "Writing", href: "/projects" },
-    ],
-  },
-  {
-    title: "WORLD",
-    links: [
-      { label: "Atlas", href: "/world" },
-      { label: "Districts", href: "/world" },
-      { label: "Citizens", href: "/world" },
-      { label: "Mobility", href: "/world" },
-      { label: "Infrastructure", href: "/world" },
-      { label: "Timeline", href: "/world" },
-    ],
-  },
-  {
-    title: "JOURNAL",
-    links: [
-      { label: "Essays", href: "/journal" },
-      { label: "Process", href: "/journal" },
-      { label: "Worldbuilding", href: "/journal" },
-      { label: "Research", href: "/journal" },
-      { label: "Fragments", href: "/journal" },
-    ],
-  },
-  {
-    title: "ABOUT",
-    links: [
-      { label: "Founder", href: "/about" },
-      { label: "Vision", href: "/about" },
-      { label: "Collaborators", href: "/about" },
-    ],
-  },
-  {
-    title: "CONTACT",
-    links: [
-      { label: "Email", href: "mailto:hello@nomadic.world" },
-      { label: "Instagram", href: "https://www.instagram.com/dongmin009/", external: true },
-      { label: "YouTube", href: "https://www.youtube.com/@theterrortubbies", external: true },
-    ],
-  },
+const LINKS = [
+  { label: "WORLD", href: "/world" },
+  { label: "CINEMA", href: "/cinema" },
+  { label: "CITIZEN", href: "/citizen" },
+  { label: "JOURNAL", href: "/journal" },
+  { label: "ABOUT", href: "/about" },
 ];
 
 export default function Footer() {
   const { text } = useLanguage();
 
   return (
-    <footer className={styles.footer} id="footer">
-      <div className={styles.inner}>
-        <div className={styles.columns}>
-          {FOOTER_COLUMNS.map((col) => (
-            <div key={col.title} className={styles.column}>
-              <h4 className={styles.columnTitle}>{col.title}</h4>
-              {col.description && (
-                <p className={styles.description}>{text(col.description)}</p>
-              )}
-              {col.links.length > 0 && (
-                <ul className={styles.linkList}>
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      {"external" in link && link.external ? (
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.footerLink}
-                        >
-                          {link.label}
-                        </a>
-                      ) : (
-                        <Link href={link.href} className={styles.footerLink}>
-                          {link.label}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+    <footer className={styles.footer}>
+      <div className={styles.top}>
+        <div>
+          <p className={styles.logo}>NOMADIC</p>
+          <p className={styles.statement}>A World Under Construction</p>
+        </div>
+        <nav className={styles.links} aria-label="Footer navigation">
+          {LINKS.map((link) => (
+            <Link key={link.label} href={link.href}>
+              {link.label}
+            </Link>
           ))}
-        </div>
-
-        <div className={styles.bottom}>
-          <p className={styles.copyright}>
-            © 2024 NOMADIC. All rights reserved.
-          </p>
-          <div className={styles.legal}>
-            <Link href="#" className={styles.legalLink}>PRIVACY</Link>
-            <Link href="#" className={styles.legalLink}>TERMS</Link>
-          </div>
-        </div>
+        </nav>
+      </div>
+      <div className={styles.bottom}>
+        <span>
+          EST. 2026 / TERRITORY UNKNOWN
+        </span>
+        <span>
+          {text({
+            en: "THE WORLD REMAINS UNFINISHED.",
+            ko: "THE WORLD REMAINS UNFINISHED.",
+          })}
+        </span>
       </div>
     </footer>
   );
